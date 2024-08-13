@@ -43,3 +43,32 @@
         return true;
     }
 }
+
+3.Find the smallest and second smallest element
+        code
+      class Solution {
+    public int[] minAnd2ndMin(int arr[]) {
+        if (arr.length < 2) {
+            return new int[]{-1}; 
+        }
+        
+        int firstMin = Integer.MAX_VALUE;
+        int secondMin = Integer.MAX_VALUE;
+
+        for (int num : arr) {
+            if (num < firstMin) {
+                secondMin = firstMin;
+                firstMin = num;
+            } else if (num > firstMin && num < secondMin) {
+                secondMin = num;
+            }
+        }
+
+        if (secondMin == Integer.MAX_VALUE) {
+            return new int[]{-1};
+        }
+
+        return new int[]{firstMin, secondMin};
+    }
+}
+
